@@ -4,8 +4,7 @@ package Negocio;
  * @author Marck Hernández, Leandro Bravo, Anthony Contreras, Michael Enriquez, Edison Quizhpe, Yasid 
  */
 public class Bin_dec {
-       
-    private String Sbin;
+       private String Sbin;
     private String Ssgn;
     private String Sexp;
     private String Smant;
@@ -18,16 +17,6 @@ public class Bin_dec {
         this.Ssgn = Sbin.substring(0, 1);
         this.Sexp = Sbin.substring(1, 9);
         this.Smant = Sbin.substring(9);
-    }
-            
-    public String signo(){
-        String signo = "";
-        if (Ssgn.equals("1")){
-            signo = "-";
-        } else {
-            signo = "+";
-        }
-        return signo;
     }
     
     public double exponente(){
@@ -83,5 +72,5 @@ public class Bin_dec {
         String salida = "El numero decimal es: "+numDec();
         return salida;
     }
-            
+
 }
