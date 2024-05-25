@@ -7,7 +7,6 @@ public class Dec_bin {
      private double numero;
     private int entero;
     private double decimal;
-    private int exponente;
 
     public Dec_bin(double numero) {
         this.numero = numero;
@@ -61,29 +60,26 @@ public class Dec_bin {
     }
     
     public String mantisa(){
-        StringBuilder coma = new StringBuilder();
-        StringBuilder sincoma = new StringBuilder();
         StringBuilder mantisa = new StringBuilder();
-        coma.append(entero()).append(".").append(decimal());
-        sincoma.append(entero()).append(decimal());
-        for( exponente = 0; exponente < coma.length();exponente++){
-            char punto = coma.charAt(exponente);
-            if(punto == '.'){
-                for(int j = 1; j < sincoma.length(); j++){
-                    mantisa.append(sincoma.charAt(j));
-                    if(mantisa.length() >= 23){
-                        break;
-                    }
-                }
-                break;
-            }
+        int indicePunto = numero.indexOf('.');
+        if (indicePunto!=-1){ 
+            mantisa.append(numero,1,indicePunto);
+            mantisa.append(numero.substring(indicePunto+1));
+        } else {
+            mantisa.append(numero);
         }
-         while (mantisa.length() < 23) {
+        while(mantisa.length()<23){
             mantisa.append('0');
         }
-        return mantisa.toString();
+        return mantisa.substring(0, 23);
     }
-    
+
+    public String coma(){
+        StringBuilder coma = new StringBuilder();
+        coma.append(entero()).append(".").append(decimal());
+        return coma.toString();
+    }
+     
     public int exponente(){
         StringBuilder coma = new StringBuilder();
         coma.append(entero()).append(".").append(decimal());
