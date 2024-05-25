@@ -16,3 +16,8 @@ Imagen demostrativa:
 Además incluimos un calendario que señala fechas límites para cada objtivo:
 ![image](https://github.com/Nub-e/Arquitectura-Numeraci-n/assets/169959926/cd7efed8-1b5e-4387-93fb-5e40d3209bb9)
 
+Actualizacion de estado 24 de mayo, 2024
+
+![image](https://github.com/Nub-e/Arquitectura-Numeraci-n/assets/169959926/8fd1ac1c-7f9f-4844-9e5f-4734cd5247aa)
+
+Varias de las actividades pasan de fase y se agregan otras debido a los requerimientos solicitados
