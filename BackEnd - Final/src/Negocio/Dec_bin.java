@@ -59,7 +59,7 @@ public class Dec_bin {
         return deci.toString();
     }
     
-    public String mantisa(){
+    public String mantisa(String numero){
         StringBuilder mantisa = new StringBuilder();
         int indicePunto = numero.indexOf('.');
         if (indicePunto!=-1){ 
