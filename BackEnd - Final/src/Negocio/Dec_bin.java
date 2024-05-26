@@ -43,12 +43,11 @@ public class Dec_bin {
         return ent.reverse().toString();
     }
     
-    
     public String decimal(){
         StringBuilder deci = new StringBuilder();
         double frac = decimal;
         for(int i = 0; i < 25 && frac !=0.0; i++){
-             frac *=2;
+             frac *=2; 
              if(frac >= 1){
                  deci.append("1");
                  frac -= 1;
@@ -73,13 +72,13 @@ public class Dec_bin {
         }
         return mantisa.substring(0, 23);
     }
-
+    
     public String coma(){
         StringBuilder coma = new StringBuilder();
         coma.append(entero()).append(".").append(decimal());
         return coma.toString();
     }
-     
+    
     public int exponente(){
         StringBuilder coma = new StringBuilder();
         coma.append(entero()).append(".").append(decimal());
@@ -97,8 +96,7 @@ public class Dec_bin {
             return primerUno -i;
         }
     }
-    
-    
+   
     public String exp(){
         StringBuilder exp = new StringBuilder();
         int n = exponente();
@@ -110,9 +108,9 @@ public class Dec_bin {
         return exp.reverse().toString();
     }
         
-
-   public String impresion(){
+    public String impresion(){
        String imp = "El numero binario: " +signo()+ "."+exp()+"."+mantisa(coma());
        return imp;
    }
+
 }
