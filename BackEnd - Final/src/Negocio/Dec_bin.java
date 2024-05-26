@@ -112,7 +112,7 @@ public class Dec_bin {
         
 
    public String impresion(){
-       String imp = "El numero binario: " +signo()+ "."+exp()+"."+mantisa();
+       String imp = "El numero binario: " +signo()+ "."+exp()+"."+mantisa(coma());
        return imp;
    }
 }
