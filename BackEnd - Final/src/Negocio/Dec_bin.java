@@ -4,7 +4,8 @@ import java.util.StringTokenizer;
  * @author Marck Hernández
  */
 public class Dec_bin {
-     private double numero;
+    
+    private double numero;
     private int entero;
     private double decimal;
 
@@ -112,5 +113,4 @@ public class Dec_bin {
        String imp = "El numero binario: " +signo()+ "."+exp()+"."+mantisa(coma());
        return imp;
    }
-
 }
