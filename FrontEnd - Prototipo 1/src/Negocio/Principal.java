@@ -12,6 +12,13 @@ public class Principal {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        
+        System.out.println("TRANSFORMACION BINARIO A DECIMAL FORMATO 8 BITS:\n");
+        System.out.println("Ingrese el numero binario que desea transformar:\n");
+        String sbin8 = scan.next();
+        BinDec_8bits bin8 = new BinDec_8bits(sbin8);
+        System.out.println(bin8.impresion8bits());
+        
         System.out.println("TRANSFORMACION BINARIO A DECIMAL:\n");
         System.out.println("Ingrese el numero binario que desea transformar en el formato IEEE 754:\n");
         String sbind = scan.next();
