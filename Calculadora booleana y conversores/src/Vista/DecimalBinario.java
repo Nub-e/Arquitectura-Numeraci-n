@@ -22,6 +22,7 @@ public class DecimalBinario extends javax.swing.JFrame {
         jTFsigno.setVisible(false);
         jTFexponente.setVisible(false);
         jTFmantiza.setVisible(false);
+        jLcalcular8bits.setVisible(true);
         jLcalcularIEEE.setVisible(false);
         
         
@@ -345,8 +346,14 @@ public class DecimalBinario extends javax.swing.JFrame {
         jTFtransformarNormal.setText("");
         
         //SE OCULTAN/MOSTRAR ELEMENTOS
-        jLcalcular8bits.setVisible(false);
-        jLcalcularIEEE.setVisible(true);
+        if(jLcalcularIEEE.isVisible()){
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false);
+        } else {
+            jLcalcular8bits.setVisible(false);
+            jLcalcularIEEE.setVisible(true);
+        }
+        
         
     }//GEN-LAST:event_jRBformatoActionPerformed
 
@@ -378,12 +385,12 @@ public class DecimalBinario extends javax.swing.JFrame {
     private void jLcalcularIEEEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularIEEEMouseClicked
         
         //CONVIERTE A FORMATO IEEE 754-32bits
-//        double numeroDecimal = Double.parseDouble(jTFnumeroDecimal.getText());
-//        Dec_bin decBin = new Dec_bin(numeroDecimal);
-//        decBin.separar();
-//        jTFsigno.setText(String.valueOf(decBin.signo()));
-//        jTFexponente.setText(decBin.exp());
-//        jTFmantiza.setText(decBin.mantisa(decBin.coma()));
+        float numeroDecimal = Float.parseFloat(jTFnumeroDecimal.getText());
+        Dec_bin decBin = new Dec_bin(numeroDecimal);
+        int bits = decBin.bits();
+        jTFsigno.setText(String.valueOf(decBin.signo()));
+        jTFexponente.setText(decBin.obtenerExponente(bits));
+        jTFmantiza.setText(decBin.obtenerMantisa(bits));
       
     }//GEN-LAST:event_jLcalcularIEEEMouseClicked
 

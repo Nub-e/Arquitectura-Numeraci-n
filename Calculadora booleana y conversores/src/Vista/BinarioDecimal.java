@@ -15,6 +15,7 @@ public class BinarioDecimal extends javax.swing.JFrame {
         AlternarComponentes.configurarAlternar(jRBformato, jLsigno, jLexponente, jLmantiza, jTFsigno,jTFexponente, jTFmantiza, jTFbinario8bits);
         //SE OCULTAN ELEMENTOS
         jLsigno.setVisible(false);
+        jLcalcular8bits.setVisible(true);
         jLexponente.setVisible(false);
         jLmantiza.setVisible(false);
         jTFsigno.setVisible(false);
@@ -336,8 +337,13 @@ public class BinarioDecimal extends javax.swing.JFrame {
         jTFmantiza.setText("");
         
         //SE OCULTAN/MOSTRAR ELEMENTOS
-        jLcalcular8bits.setVisible(false);
-        jLcalcularIEEE.setVisible(true);
+        if(jLcalcularIEEE.isVisible()){
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false);
+        } else {
+            jLcalcular8bits.setVisible(false);
+            jLcalcularIEEE.setVisible(true);
+        }
            
     }//GEN-LAST:event_jRBformatoActionPerformed
 
