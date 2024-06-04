@@ -1,19 +1,26 @@
 package Vista;
 
+import Negocio.Hex_bin;
+
 public class HexadecimalBinario extends javax.swing.JFrame {
 
     public HexadecimalBinario() {
         initComponents();
+        //CENTRAR PANTALLA
         this.setLocationRelativeTo(this);
+        //CAMBIAR LOS COLORES A LOS BOTONES AL MOMENTO DE PARSAR POR ENCIMA DE LOS MISMOS
+        CambiosColorBoton.configurarCambiosColor(jLcalcularIEEE, jPcalcular);
         CambiosColorBoton.configurarCambiosColor(jLguardar, jPguardar);
         CambiosColorBoton.configurarCambiosColor(jLborrarHistorial, jPborrarHistorial);
         AlternarComponentes.configurarAlternar(jRBformato, jLsigno, jLexponente, jLmantiza, jTFsigno,jTFexponente, jTFmantiza, jTFtransformarNormal);
+        //SE OCULTAN ELEMENTOS
         jLsigno.setVisible(false);
         jLexponente.setVisible(false);
         jLmantiza.setVisible(false);
         jTFsigno.setVisible(false);
         jTFexponente.setVisible(false);
         jTFmantiza.setVisible(false);
+        jLcalcularIEEE.setVisible(false);
     }
 
     /**
@@ -42,14 +49,17 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jLmantiza = new javax.swing.JLabel();
         jLsigno = new javax.swing.JLabel();
         jLexponente = new javax.swing.JLabel();
-        jPguardar = new javax.swing.JPanel();
-        jLguardar = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jThistorialHaB = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jPborrarHistorial = new javax.swing.JPanel();
         jLborrarHistorial = new javax.swing.JLabel();
         jTFtransformarNormal = new javax.swing.JTextField();
+        jPguardar = new javax.swing.JPanel();
+        jLguardar = new javax.swing.JLabel();
+        jPcalcular = new javax.swing.JPanel();
+        jLcalcularIEEE = new javax.swing.JLabel();
+        jLcalcularNormal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -132,6 +142,7 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 860, 50));
 
+        jTFnumeroHexa.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFnumeroHexa.setBorder(null);
         jPanel1.add(jTFnumeroHexa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 40));
 
@@ -154,16 +165,19 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
         jTFmantiza.setEditable(false);
         jTFmantiza.setBackground(new java.awt.Color(255, 255, 255));
+        jTFmantiza.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFmantiza.setBorder(null);
         jPanel1.add(jTFmantiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 300, 40));
 
         jTFsigno.setEditable(false);
         jTFsigno.setBackground(new java.awt.Color(255, 255, 255));
+        jTFsigno.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFsigno.setBorder(null);
         jPanel1.add(jTFsigno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 50, 40));
 
         jTFexponente.setEditable(false);
         jTFexponente.setBackground(new java.awt.Color(255, 255, 255));
+        jTFexponente.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFexponente.setBorder(null);
         jPanel1.add(jTFexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 150, 40));
 
@@ -182,34 +196,10 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jLexponente.setText("Exponente");
         jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 150, -1));
 
-        jPguardar.setBackground(new java.awt.Color(220, 208, 192));
-
-        jLguardar.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLguardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLguardar.setText("GUARDAR");
-        jLguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout jPguardarLayout = new javax.swing.GroupLayout(jPguardar);
-        jPguardar.setLayout(jPguardarLayout);
-        jPguardarLayout.setHorizontalGroup(
-            jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPguardarLayout.setVerticalGroup(
-            jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        jThistorialHaB.setEditable(false);
+        jThistorialHaB.setColumns(20);
+        jThistorialHaB.setRows(5);
+        jScrollPane2.setViewportView(jThistorialHaB);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
 
@@ -242,8 +232,81 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jPanel1.add(jPborrarHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 200, 40));
 
         jTFtransformarNormal.setEditable(false);
+        jTFtransformarNormal.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFtransformarNormal.setBorder(null);
         jPanel1.add(jTFtransformarNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 520, 40));
+
+        jPguardar.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLguardar.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLguardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLguardar.setText("GUARDAR");
+        jLguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLguardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLguardarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPguardarLayout = new javax.swing.GroupLayout(jPguardar);
+        jPguardar.setLayout(jPguardarLayout);
+        jPguardarLayout.setHorizontalGroup(
+            jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPguardarLayout.setVerticalGroup(
+            jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 250, 40));
+
+        jPcalcular.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLcalcularIEEE.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLcalcularIEEE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcalcularIEEE.setText("CALCULAR");
+        jLcalcularIEEE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLcalcularIEEE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcalcularIEEEMouseClicked(evt);
+            }
+        });
+
+        jLcalcularNormal.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLcalcularNormal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcalcularNormal.setText("CALCULAR");
+        jLcalcularNormal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLcalcularNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcalcularNormalMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPcalcularLayout = new javax.swing.GroupLayout(jPcalcular);
+        jPcalcular.setLayout(jPcalcularLayout);
+        jPcalcularLayout.setHorizontalGroup(
+            jPcalcularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcalcularLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLcalcularIEEE, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLcalcularNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPcalcularLayout.setVerticalGroup(
+            jPcalcularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcalcularLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPcalcularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLcalcularIEEE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLcalcularNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jPanel1.add(jPcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 250, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,11 +327,23 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
+       
+        //BORRAR DATOS DE LOS JTFIELD
+        jTFnumeroHexa.setText("");
+        jTFtransformarNormal.setText("");
+        jTFsigno.setText("");
+        jTFexponente.setText("");
+        jTFmantiza.setText("");
+        
+        //SE OCULTAN/MOSTRAR ELEMENTOS
+        jLcalcularNormal.setVisible(false);
+        jLcalcularIEEE.setVisible(true);
         
     }//GEN-LAST:event_jRBformatoActionPerformed
 
     private void jLregresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLregresarMouseClicked
     
+       //SE MUEVE A OTROS JFRAMES
        MenuConversores menucon = new MenuConversores();
        menucon.setVisible(true);
        this.setVisible(false);
@@ -277,6 +352,7 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
     private void jLhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLhomeMouseClicked
         
+       //SE MUEVE A OTROS JFRAMES
        MenuPrincipal menuprin = new MenuPrincipal();
        menuprin.setVisible(true);
        this.setVisible(false);
@@ -285,9 +361,45 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
     private void jLsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLsalirMouseClicked
 
+        //SALE DEL SISTEMA
         System.exit(0);
         
     }//GEN-LAST:event_jLsalirMouseClicked
+
+    private void jLcalcularIEEEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularIEEEMouseClicked
+            
+        //CONVIERTE A FORMATO IEEE 754-32bits
+        String numeroHexa = jTFnumeroHexa.getText();
+        Hex_bin hexBin = new Hex_bin(numeroHexa);
+        hexBin.verificar();
+        String numeroBinario = hexBin.bin();
+        String signo = numeroBinario.substring(0, 1);
+        String exponente = numeroBinario.substring(1, 9);
+        String mantisa = numeroBinario.substring(9);
+        jTFsigno.setText(signo);
+        jTFexponente.setText(exponente);
+        jTFmantiza.setText(mantisa);
+        
+    }//GEN-LAST:event_jLcalcularIEEEMouseClicked
+
+    private void jLcalcularNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularNormalMouseClicked
+        
+        //CONVIERTE A FORMATO NORMAL
+        
+        
+    }//GEN-LAST:event_jLcalcularNormalMouseClicked
+
+    private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
+        
+        String texto = jTFtransformarNormal.getText(); 
+        jThistorialHaB.append(texto + "\n"); 
+
+        String texto1 = jTFsigno.getText();
+        String texto2= jTFexponente.getText(); 
+        String texto3 = jTFmantiza.getText(); 
+        jThistorialHaB.append(texto1 + texto2 + texto3 + "\n"); 
+
+    }//GEN-LAST:event_jLguardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -331,6 +443,8 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLborrarHistorial;
+    private javax.swing.JLabel jLcalcularIEEE;
+    private javax.swing.JLabel jLcalcularNormal;
     private javax.swing.JLabel jLexponente;
     private javax.swing.JLabel jLguardar;
     private javax.swing.JLabel jLhome;
@@ -342,6 +456,7 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPborrarHistorial;
+    private javax.swing.JPanel jPcalcular;
     private javax.swing.JPanel jPguardar;
     private javax.swing.JRadioButton jRBformato;
     private javax.swing.JScrollPane jScrollPane2;
@@ -350,6 +465,6 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     private javax.swing.JTextField jTFnumeroHexa;
     private javax.swing.JTextField jTFsigno;
     private javax.swing.JTextField jTFtransformarNormal;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jThistorialHaB;
     // End of variables declaration//GEN-END:variables
 }
