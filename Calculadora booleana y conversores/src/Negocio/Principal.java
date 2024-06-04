@@ -12,7 +12,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 //        
 //        System.out.println("TRANSFORMACION BINARIO A DECIMAL FORMATO 8 BITS:\n");
 //        System.out.println("Ingrese el numero binario que desea transformar:\n");
@@ -27,13 +27,12 @@ public class Principal {
 //        Bin_dec dbinario  = new Bin_dec(sbind);
 //        dbinario.separacion();
 //        System.out.println(dbinario.impresion());
-//        
-//        System.out.println("\nTRANSFORMACION DECIMAL A BINARIO:\n");
-//        System.out.println("Ingrese el numero decimal que desea transformar:\n");
-//        double ndec = scan.nextDouble();
-//        Dec_bin decimal = new Dec_bin(ndec);
-//        decimal.separar();
-//        System.out.print(decimal.impresion());
+        System.out.println("\nTRANSFORMACION DECIMAL A BINARIO:\n");
+        System.out.println("Ingrese el numero decimal que desea transformar:\n");
+        String numero = scan.next();
+        float ndec = Float.parseFloat(numero);
+        Dec_bin decimal = new Dec_bin(ndec);
+        System.out.print(decimal.impresion());
 //        
 //        System.out.println("\n\nTRANSFORMACION BINARIO A HEXADECIMAL:\n");
 //        System.out.println("Ingrese el numero binario que desea transformar en el formato IEEE 754:\n");
@@ -50,6 +49,13 @@ public class Principal {
 
         Bienvenida bien = new Bienvenida();
         bien.setVisible(true);
+
+        System.out.println("\nTRANSFORMACION DECIMAL A BINARIO en 8 bits:\n");
+        System.out.println("Ingrese el numero decimal que desea transformar:\n");
+        String num = scan.next();
+        double n = Double.parseDouble(num);
+        dec_bin8bits bit = new dec_bin8bits((int) n);
+        System.out.print(bit.imprimir());
 
         
     }

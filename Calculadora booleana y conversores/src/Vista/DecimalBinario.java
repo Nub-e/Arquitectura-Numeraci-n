@@ -378,12 +378,12 @@ public class DecimalBinario extends javax.swing.JFrame {
     private void jLcalcularIEEEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularIEEEMouseClicked
         
         //CONVIERTE A FORMATO IEEE 754-32bits
-        double numeroDecimal = Double.parseDouble(jTFnumeroDecimal.getText());
-        Dec_bin decBin = new Dec_bin(numeroDecimal);
-        decBin.separar();
-        jTFsigno.setText(String.valueOf(decBin.signo()));
-        jTFexponente.setText(decBin.exp());
-        jTFmantiza.setText(decBin.mantisa(decBin.coma()));
+//        double numeroDecimal = Double.parseDouble(jTFnumeroDecimal.getText());
+//        Dec_bin decBin = new Dec_bin(numeroDecimal);
+//        decBin.separar();
+//        jTFsigno.setText(String.valueOf(decBin.signo()));
+//        jTFexponente.setText(decBin.exp());
+//        jTFmantiza.setText(decBin.mantisa(decBin.coma()));
       
     }//GEN-LAST:event_jLcalcularIEEEMouseClicked
 
