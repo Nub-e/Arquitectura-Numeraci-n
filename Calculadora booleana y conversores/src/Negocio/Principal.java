@@ -29,9 +29,9 @@ public class Principal {
 //        
         System.out.println("\nTRANSFORMACION DECIMAL A BINARIO:\n");
         System.out.println("Ingrese el numero decimal que desea transformar:\n");
-        double ndec = scan.nextDouble();
+        String numero = scan.next();
+        float ndec = Float.parseFloat(numero);
         Dec_bin decimal = new Dec_bin(ndec);
-        decimal.separar();
         System.out.print(decimal.impresion());
 //        
 //        System.out.println("\n\nTRANSFORMACION BINARIO A HEXADECIMAL:\n");
@@ -46,6 +46,14 @@ public class Principal {
 //        Hex_bin hbinario = new Hex_bin(shex);
 //        hbinario.verificar();
 //        System.out.println(hbinario.impresion());
+
+        System.out.println("\nTRANSFORMACION DECIMAL A BINARIO en 8 bits:\n");
+        System.out.println("Ingrese el numero decimal que desea transformar:\n");
+        String num = scan.next();
+        double n = Double.parseDouble(num);
+        dec_bin8bits bit = new dec_bin8bits((int) n);
+        System.out.print(bit.imprimir());
+
         
     }
     
