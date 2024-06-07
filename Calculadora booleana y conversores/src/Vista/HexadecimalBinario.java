@@ -1,9 +1,10 @@
 package Vista;
 
 import Negocio.Hex_bin;
+import javax.swing.JOptionPane;
 
 public class HexadecimalBinario extends javax.swing.JFrame {
-
+    private boolean textoMostrado = false;
     public HexadecimalBinario() {
         initComponents();
         //CENTRAR PANTALLA
@@ -49,8 +50,6 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jLmantiza = new javax.swing.JLabel();
         jLsigno = new javax.swing.JLabel();
         jLexponente = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jThistorialHaB = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jPborrarHistorial = new javax.swing.JPanel();
         jLborrarHistorial = new javax.swing.JLabel();
@@ -60,6 +59,8 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jPcalcular = new javax.swing.JPanel();
         jLcalcularIEEE = new javax.swing.JLabel();
         jLcalcularNormal = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jThistorialGeneral = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -144,6 +145,11 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
         jTFnumeroHexa.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFnumeroHexa.setBorder(null);
+        jTFnumeroHexa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFnumeroHexaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTFnumeroHexa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
@@ -195,13 +201,6 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jLexponente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLexponente.setText("Exponente");
         jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 150, -1));
-
-        jThistorialHaB.setEditable(false);
-        jThistorialHaB.setColumns(20);
-        jThistorialHaB.setRows(5);
-        jScrollPane2.setViewportView(jThistorialHaB);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jLabel7.setText("Ingrese el numero hexadecimal:");
@@ -308,6 +307,14 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
         jPanel1.add(jPcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 250, -1));
 
+        jThistorialGeneral.setEditable(false);
+        jThistorialGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        jThistorialGeneral.setColumns(20);
+        jThistorialGeneral.setRows(5);
+        jScrollPane2.setViewportView(jThistorialGeneral);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -390,16 +397,19 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jLcalcularNormalMouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
+        String textoInicio=jTFnumeroHexa.getText();
+        jThistorialGeneral.append("\n"+"El número en hexadecimal es:\n "+textoInicio+"\n" );
         
-        String texto = jTFtransformarNormal.getText(); 
-        jThistorialHaB.append(texto + "\n"); 
-
         String texto1 = jTFsigno.getText();
         String texto2= jTFexponente.getText(); 
         String texto3 = jTFmantiza.getText(); 
-        jThistorialHaB.append(texto1 + texto2 + texto3 + "\n"); 
-
+        jThistorialGeneral.append("El número en binario es:\n"+texto1+texto2+texto3+"\n"); 
+    
     }//GEN-LAST:event_jLguardarMouseClicked
+
+    private void jTFnumeroHexaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFnumeroHexaKeyTyped
+
+    }//GEN-LAST:event_jTFnumeroHexaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -465,6 +475,6 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     private javax.swing.JTextField jTFnumeroHexa;
     private javax.swing.JTextField jTFsigno;
     private javax.swing.JTextField jTFtransformarNormal;
-    private javax.swing.JTextArea jThistorialHaB;
+    private javax.swing.JTextArea jThistorialGeneral;
     // End of variables declaration//GEN-END:variables
 }

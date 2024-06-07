@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Marck Hernández
  */
 public class Principal {
-
+     public static StringBuilder historialGeneral = new StringBuilder();
     /**
      * @param args the command line arguments
      */
@@ -33,6 +33,8 @@ public class Principal {
         float ndec = Float.parseFloat(numero);
         Dec_bin decimal = new Dec_bin(ndec);
         System.out.print(decimal.impresion());
+        // Agrega el resultado al historial
+        historialGeneral.append(decimal.impresion());
 //        
 //        System.out.println("\n\nTRANSFORMACION BINARIO A HEXADECIMAL:\n");
 //        System.out.println("Ingrese el numero binario que desea transformar en el formato IEEE 754:\n");
@@ -56,8 +58,12 @@ public class Principal {
         double n = Double.parseDouble(num);
         dec_bin8bits bit = new dec_bin8bits((int) n);
         System.out.print(bit.imprimir());
-
-        
+        // Agrega el resultado al historial
+        historialGeneral.append(bit.imprimir());
+         System.out.println("\nHistorial:\n" + historialGeneral.toString());
+        // Cierra el scanner
+        scan.close();
     }
     
 }
+

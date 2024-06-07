@@ -1,9 +1,10 @@
 package Vista;
 
 import Negocio.Bin_hex;
+import javax.swing.JOptionPane;
 
 public class BinarioHexadecimal extends javax.swing.JFrame {
-
+   
     public BinarioHexadecimal() {
         initComponents();
         //CENTRAR PANTALLA
@@ -49,8 +50,6 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
         jLmantiza = new javax.swing.JLabel();
         jLsigno = new javax.swing.JLabel();
         jLexponente = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jThistorialBaH = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jPborrarHistorial = new javax.swing.JPanel();
         jLborrarHistorial = new javax.swing.JLabel();
@@ -60,6 +59,8 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
         jLcalcularIEEE = new javax.swing.JLabel();
         jPguardar = new javax.swing.JPanel();
         jLguardar = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jThistorialGeneral = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -167,14 +168,34 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
 
         jTFmantiza.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFmantiza.setBorder(null);
+        jTFmantiza.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFmantizaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTFmantiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 300, 40));
 
         jTFsigno.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFsigno.setBorder(null);
+        jTFsigno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFsignoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTFsigno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 50, 40));
 
         jTFexponente.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFexponente.setBorder(null);
+        jTFexponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFexponenteActionPerformed(evt);
+            }
+        });
+        jTFexponente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFexponenteKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTFexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 150, 40));
 
         jLmantiza.setFont(new java.awt.Font("Segoe UI Semilight", 2, 12)); // NOI18N
@@ -191,14 +212,6 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
         jLexponente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLexponente.setText("Exponente");
         jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 150, -1));
-
-        jThistorialBaH.setEditable(false);
-        jThistorialBaH.setBackground(new java.awt.Color(255, 255, 255));
-        jThistorialBaH.setColumns(20);
-        jThistorialBaH.setRows(5);
-        jScrollPane2.setViewportView(jThistorialBaH);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jLabel7.setText("Ingrese el numero binario:");
@@ -235,6 +248,11 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
 
         jTFbinarioNormal.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFbinarioNormal.setBorder(null);
+        jTFbinarioNormal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFbinarioNormalKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTFbinarioNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 40));
 
         jPcalcular.setBackground(new java.awt.Color(220, 208, 192));
@@ -309,6 +327,14 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
 
         jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 250, 40));
 
+        jThistorialGeneral.setEditable(false);
+        jThistorialGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        jThistorialGeneral.setColumns(20);
+        jThistorialGeneral.setRows(5);
+        jScrollPane2.setViewportView(jThistorialGeneral);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -324,7 +350,15 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     public void restringirLetrasyNumeros(java.awt.event.KeyEvent evt){
+    char caracter = evt.getKeyChar();
+    
+    if (Character.isLetter(caracter) || (caracter!='1' && caracter!='0' && caracter!= '\b' && caracter!= '.')) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Por favor ingrese números.");
+        }    
+    }
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
         
         //BORRAR DATOS DE LOS JTFIELD
@@ -379,14 +413,14 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLcalcularIEEEMouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
-
+   
         String texto = jTFresultado.getText(); 
-        jThistorialBaH.append(texto + "\n"); 
-
+        jThistorialGeneral.append("\n"+"El número en binario es:\n "+texto+"\n"); 
+        
         String texto1 = jTFsigno.getText();
         String texto2= jTFexponente.getText(); 
         String texto3 = jTFmantiza.getText(); 
-        jThistorialBaH.append(texto1 + texto2 + texto3 + "\n");
+        jThistorialGeneral.append("El número en hexadecimal es:\n"+texto1+texto2+texto3+"\n");
         
     }//GEN-LAST:event_jLguardarMouseClicked
 
@@ -398,9 +432,29 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
 
     private void jLborrarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarHistorialMouseClicked
         
-        jThistorialBaH.setText("");
+        jThistorialGeneral.setText("");
         
     }//GEN-LAST:event_jLborrarHistorialMouseClicked
+
+    private void jTFsignoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFsignoKeyTyped
+        restringirLetrasyNumeros(evt);
+    }//GEN-LAST:event_jTFsignoKeyTyped
+
+    private void jTFexponenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFexponenteKeyTyped
+        restringirLetrasyNumeros(evt);
+    }//GEN-LAST:event_jTFexponenteKeyTyped
+
+    private void jTFmantizaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFmantizaKeyTyped
+        restringirLetrasyNumeros(evt);
+    }//GEN-LAST:event_jTFmantizaKeyTyped
+
+    private void jTFexponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFexponenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFexponenteActionPerformed
+
+    private void jTFbinarioNormalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbinarioNormalKeyTyped
+        restringirLetrasyNumeros(evt);
+    }//GEN-LAST:event_jTFbinarioNormalKeyTyped
 
     /**
      * @param args the command line arguments
@@ -468,6 +522,6 @@ public class BinarioHexadecimal extends javax.swing.JFrame {
     private javax.swing.JTextField jTFmantiza;
     private javax.swing.JTextField jTFresultado;
     private javax.swing.JTextField jTFsigno;
-    private javax.swing.JTextArea jThistorialBaH;
+    private javax.swing.JTextArea jThistorialGeneral;
     // End of variables declaration//GEN-END:variables
 }
