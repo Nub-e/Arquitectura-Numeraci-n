@@ -172,9 +172,9 @@ public class OperacionesBooleanas {
         }
         
         expr = expr.replaceAll("([ABC*+~()]+)\\+\\(\\~\\1\\)", "1");  // a + (~a) = 1
-        expr = expr.replaceAll("([ABC*+~()]+)\\*\\(\\~\\1\\)", "0");  // a * (~a) = 0
+        expr = expr.replaceAll("([ABC*+~()]+)\\*\\(*\\~\\1\\)*", "0");  // a * (~a) = 0
         expr = expr.replaceAll("\\(\\~([ABC*+]+)\\)\\+\\1", "1");  // (~a) + a = 1
-        expr = expr.replaceAll("\\~([ABC~*+]+)\\*\\1", "0");  // (~a) * a = 0
+        expr = expr.replaceAll("\\(*\\~([ABC~*+]+)\\)*\\*\\1", "0");  // ~a * a = 0
         
         expr = expr.replaceAll("([ABC~*+()]+)\\+0", "$1");  // a + 0 = a // w quiere decir caracter alfa numerico y cuando la expresion tiene esta forma w \\+1 quiere decir que si encuntra un 1 
         expr = expr.replaceAll("0\\+([ABC~*+()]+)", "$1");  // 0 + a = a // y seguido tiene el mismo caracter la aplica 

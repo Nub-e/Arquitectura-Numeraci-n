@@ -675,15 +675,15 @@ public class CalculadorBooleana extends javax.swing.JFrame {
 
     private void jLcalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularMouseClicked
         
-        //CONVIERTE LOS SIMBOLOS
         String inputText = jTFexpresionBooleana.getText();
         String convertedText = ConvertirSimbolos.toAlternativeNotation(inputText);
         
         //IMPLEMENTACION 
         ExpresionATrabajar bool = new ExpresionATrabajar();
-        String resultado = bool.exprTrab(convertedText);
-        jTFresultado.setText(resultado);
-        
+        String inputConv = bool.exprTrab(convertedText);
+        ConvertirSimbolos sim = new ConvertirSimbolos();
+        String resultadoCAm = sim.toOriginalNotation(inputConv);
+        jTFresultado.setText(resultadoCAm);
     }//GEN-LAST:event_jLcalcularMouseClicked
 
     private void jLvariable0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariable0MouseClicked

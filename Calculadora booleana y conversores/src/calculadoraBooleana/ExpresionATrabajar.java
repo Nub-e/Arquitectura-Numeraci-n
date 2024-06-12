@@ -39,7 +39,7 @@ public class ExpresionATrabajar {
                 expression = salida;
                 expression=asoMult(expression, op);
                 expression=asoSums(expression, op);
-//                System.out.println("Expresion simplificada: " +expression);
+                System.out.println("Expresion simplificada: " +expression);
                 salida = medio;
             }
             contador++;
