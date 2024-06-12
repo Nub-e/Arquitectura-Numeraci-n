@@ -1,8 +1,6 @@
 package Vista;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import calculadoraBooleana.ExpresionATrabajar;
 
 public class CalculadorBooleana extends javax.swing.JFrame {
 
@@ -19,6 +17,10 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         CambiosColorBoton.configurarCambiosColor(jLvariableA, jPvariableA);
         CambiosColorBoton.configurarCambiosColor(jLvariableB, jPvariableB);
         CambiosColorBoton.configurarCambiosColor(jLvariableC, jPvariableC);
+        CambiosColorBoton.configurarCambiosColor(jLvariable0, jPvariable0);
+        CambiosColorBoton.configurarCambiosColor(jLvariable1, jPvariable1);
+        CambiosColorBoton.configurarCambiosColor(jLac, jPac);
+        CambiosColorBoton.configurarCambiosColor(jLdel, jPdel);
     }
 
     /**
@@ -59,12 +61,20 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPborrarHistorial = new javax.swing.JPanel();
         jLborrarHistorial = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTpantallaBooleana = new javax.swing.JTextArea();
         jPguardar1 = new javax.swing.JPanel();
-        jLguardar1 = new javax.swing.JLabel();
-        jPguardar2 = new javax.swing.JPanel();
-        jLborrarVariable = new javax.swing.JLabel();
+        jLcalcular = new javax.swing.JLabel();
+        jPdel = new javax.swing.JPanel();
+        jLdel = new javax.swing.JLabel();
+        jPvariable0 = new javax.swing.JPanel();
+        jLvariable0 = new javax.swing.JLabel();
+        jPvariable1 = new javax.swing.JPanel();
+        jLvariable1 = new javax.swing.JLabel();
+        jTFexpresionBooleana = new javax.swing.JTextField();
+        jTFresultado = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPac = new javax.swing.JPanel();
+        jLac = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -148,14 +158,18 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         jPnegacion.setLayout(jPnegacionLayout);
         jPnegacionLayout.setHorizontalGroup(
             jPnegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLnegacion, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnegacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLnegacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPnegacionLayout.setVerticalGroup(
             jPnegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLnegacion, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnegacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLnegacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPnegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 60, 40));
+        jPanel1.add(jPnegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 60, 40));
         jPnegacion.getAccessibleContext().setAccessibleName("");
 
         jPconjuncion.setBackground(new java.awt.Color(220, 208, 192));
@@ -183,7 +197,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLconjuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPconjuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jPanel1.add(jPconjuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, -1));
 
         jPdisyuncion.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -210,7 +224,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLdisyuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPdisyuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+        jPanel1.add(jPdisyuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
 
         jPparenArbierto.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -237,7 +251,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLparenAbierto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPparenArbierto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
+        jPanel1.add(jPparenArbierto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
         jPparenCerrado.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -264,7 +278,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLparenCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPparenCerrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
+        jPanel1.add(jPparenCerrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
         jPvariableA.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -292,7 +306,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLvariableA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPvariableA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+        jPanel1.add(jPvariableA, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         jPvariableB.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -320,7 +334,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLvariableB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPvariableB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
+        jPanel1.add(jPvariableB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
         jPvariableC.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -343,12 +357,12 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         );
         jPvariableCLayout.setVerticalGroup(
             jPvariableCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPvariableCLayout.createSequentialGroup()
-                .addComponent(jLvariableC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPvariableCLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLvariableC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPvariableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, 40));
+        jPanel1.add(jPvariableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, 40));
 
         jPguardar.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -366,9 +380,9 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         jPguardar.setLayout(jPguardarLayout);
         jPguardarLayout.setHorizontalGroup(
             jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPguardarLayout.createSequentialGroup()
-                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPguardarLayout.setVerticalGroup(
             jPguardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +391,7 @@ public class CalculadorBooleana extends javax.swing.JFrame {
                 .addComponent(jLguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 160, -1));
+        jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 150, -1));
 
         jThistorialBooleana.setEditable(false);
         jThistorialBooleana.setBackground(new java.awt.Color(255, 255, 255));
@@ -420,23 +434,15 @@ public class CalculadorBooleana extends javax.swing.JFrame {
 
         jPanel1.add(jPborrarHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 200, 40));
 
-        jTpantallaBooleana.setEditable(false);
-        jTpantallaBooleana.setBackground(new java.awt.Color(255, 255, 255));
-        jTpantallaBooleana.setColumns(20);
-        jTpantallaBooleana.setRows(5);
-        jScrollPane1.setViewportView(jTpantallaBooleana);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 520, 130));
-
         jPguardar1.setBackground(new java.awt.Color(220, 208, 192));
 
-        jLguardar1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLguardar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLguardar1.setText("BORRAR");
-        jLguardar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLguardar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLcalcular.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLcalcular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcalcular.setText("CALCULAR");
+        jLcalcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLcalcular.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLguardar1MouseClicked(evt);
+                jLcalcularMouseClicked(evt);
             }
         });
 
@@ -444,59 +450,156 @@ public class CalculadorBooleana extends javax.swing.JFrame {
         jPguardar1.setLayout(jPguardar1Layout);
         jPguardar1Layout.setHorizontalGroup(
             jPguardar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLguardar1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardar1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPguardar1Layout.setVerticalGroup(
             jPguardar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardar1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLguardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 150, -1));
+        jPanel1.add(jPguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, -1));
 
-        jPguardar2.setBackground(new java.awt.Color(220, 208, 192));
+        jPdel.setBackground(new java.awt.Color(220, 208, 192));
 
-        jLborrarVariable.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLborrarVariable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLborrarVariable.setText("BORRAR UNA VARIABLE");
-        jLborrarVariable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLborrarVariable.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLdel.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLdel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLdel.setText("DEL");
+        jLdel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLdel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLborrarVariableMouseClicked(evt);
+                jLdelMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPguardar2Layout = new javax.swing.GroupLayout(jPguardar2);
-        jPguardar2.setLayout(jPguardar2Layout);
-        jPguardar2Layout.setHorizontalGroup(
-            jPguardar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLborrarVariable, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-        );
-        jPguardar2Layout.setVerticalGroup(
-            jPguardar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardar2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPdelLayout = new javax.swing.GroupLayout(jPdel);
+        jPdel.setLayout(jPdelLayout);
+        jPdelLayout.setHorizontalGroup(
+            jPdelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLborrarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLdel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPdelLayout.setVerticalGroup(
+            jPdelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLdel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPguardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+        jPanel1.add(jPdel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 60, -1));
+
+        jPvariable0.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLvariable0.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLvariable0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLvariable0.setText("0");
+        jLvariable0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLvariable0MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPvariable0Layout = new javax.swing.GroupLayout(jPvariable0);
+        jPvariable0.setLayout(jPvariable0Layout);
+        jPvariable0Layout.setHorizontalGroup(
+            jPvariable0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPvariable0Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLvariable0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPvariable0Layout.setVerticalGroup(
+            jPvariable0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPvariable0Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLvariable0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPvariable0, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
+
+        jPvariable1.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLvariable1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLvariable1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLvariable1.setText("1");
+        jLvariable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLvariable1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPvariable1Layout = new javax.swing.GroupLayout(jPvariable1);
+        jPvariable1.setLayout(jPvariable1Layout);
+        jPvariable1Layout.setHorizontalGroup(
+            jPvariable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPvariable1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLvariable1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPvariable1Layout.setVerticalGroup(
+            jPvariable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPvariable1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLvariable1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPvariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
+
+        jTFexpresionBooleana.setEditable(false);
+        jPanel1.add(jTFexpresionBooleana, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 510, 50));
+
+        jTFresultado.setEditable(false);
+        jPanel1.add(jTFresultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 510, 50));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLabel2.setText("Resultado de la transformación:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLabel4.setText("Ingrese la expresión booleana:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jPac.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLac.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLac.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLac.setText("AC");
+        jLac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLacMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPacLayout = new javax.swing.GroupLayout(jPac);
+        jPac.setLayout(jPacLayout);
+        jPacLayout.setHorizontalGroup(
+            jPacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPacLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLac, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPacLayout.setVerticalGroup(
+            jPacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPacLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLac, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -513,60 +616,113 @@ public class CalculadorBooleana extends javax.swing.JFrame {
     private void jLsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLsalirMouseClicked
 
         System.exit(0);
+        
     }//GEN-LAST:event_jLsalirMouseClicked
 
     private void jLnegacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLnegacionMouseClicked
-     jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "¬");
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "¬");
+        
     }//GEN-LAST:event_jLnegacionMouseClicked
 
     private void jLborrarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarHistorialMouseClicked
-       jThistorialBooleana.setText("");
+       
+        jThistorialBooleana.setText("");
+        
     }//GEN-LAST:event_jLborrarHistorialMouseClicked
 
     private void jLconjuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLconjuncionMouseClicked
-      jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "∧");
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "∧");
+        
     }//GEN-LAST:event_jLconjuncionMouseClicked
 
     private void jLdisyuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLdisyuncionMouseClicked
-     jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "∨");
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "∨");
+        
     }//GEN-LAST:event_jLdisyuncionMouseClicked
 
     private void jLparenAbiertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLparenAbiertoMouseClicked
-     jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "(");  
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "("); 
+        
     }//GEN-LAST:event_jLparenAbiertoMouseClicked
 
     private void jLparenCerradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLparenCerradoMouseClicked
-     jTpantallaBooleana.setText(jTpantallaBooleana.getText() + ")"); 
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + ")"); 
+        
     }//GEN-LAST:event_jLparenCerradoMouseClicked
 
     private void jLvariableAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariableAMouseClicked
-    jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "A"); 
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "A"); 
+        
     }//GEN-LAST:event_jLvariableAMouseClicked
 
     private void jLvariableBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariableBMouseClicked
-     jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "B"); 
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "B"); 
+        
     }//GEN-LAST:event_jLvariableBMouseClicked
 
     private void jLvariableCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariableCMouseClicked
-    jTpantallaBooleana.setText(jTpantallaBooleana.getText() + "C"); 
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "C"); 
+        
     }//GEN-LAST:event_jLvariableCMouseClicked
 
-    private void jLguardar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardar1MouseClicked
-     jTpantallaBooleana.setText("");
-    }//GEN-LAST:event_jLguardar1MouseClicked
+    private void jLcalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularMouseClicked
+        
+        //CONVIERTE LOS SIMBOLOS
+        String inputText = jTFexpresionBooleana.getText();
+        String convertedText = ConvertirSimbolos.toAlternativeNotation(inputText);
+        
+        //IMPLEMENTACION 
+        ExpresionATrabajar bool = new ExpresionATrabajar();
+        String resultado = bool.exprTrab(convertedText);
+        jTFresultado.setText(resultado);
+        
+    }//GEN-LAST:event_jLcalcularMouseClicked
+
+    private void jLvariable0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariable0MouseClicked
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "0"); 
+        
+    }//GEN-LAST:event_jLvariable0MouseClicked
+
+    private void jLvariable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLvariable1MouseClicked
+        
+        jTFexpresionBooleana.setText(jTFexpresionBooleana.getText() + "1"); 
+        
+    }//GEN-LAST:event_jLvariable1MouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
-    String texto = jTpantallaBooleana.getText(); // Obtener el texto de jTpantallaBooleana
-    jThistorialBooleana.append(texto + "\n");      
+        
+        String texto1 = jTFexpresionBooleana.getText();
+        String texto2 = jTFresultado.getText();
+   
+        jThistorialBooleana.append("\nExpresión ingresada:\n" + texto1 + "\nExpresion simplificada:\n" + texto2 );
+        
     }//GEN-LAST:event_jLguardarMouseClicked
 
-    private void jLborrarVariableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarVariableMouseClicked
-    String texto = jTpantallaBooleana.getText(); 
-    if (!texto.isEmpty()) { 
-    String nuevoTexto = texto.substring(0, texto.length() - 1);
-    jTpantallaBooleana.setText(nuevoTexto);
-    }
-    }//GEN-LAST:event_jLborrarVariableMouseClicked
+    private void jLdelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLdelMouseClicked
+
+        String texto = jTFexpresionBooleana.getText();
+        if (!texto.isEmpty()) {
+            String nuevoTexto = texto.substring(0, texto.length() - 1);
+            jTFexpresionBooleana.setText(nuevoTexto);
+        }
+
+    }//GEN-LAST:event_jLdelMouseClicked
+
+    private void jLacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLacMouseClicked
+       
+        jTFexpresionBooleana.setText("");
+        jTFresultado.setText("");
+        
+    }//GEN-LAST:event_jLacMouseClicked
 
     /**
      * @param args the command line arguments
@@ -605,39 +761,47 @@ public class CalculadorBooleana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLac;
     private javax.swing.JLabel jLborrarHistorial;
-    private javax.swing.JLabel jLborrarVariable;
+    private javax.swing.JLabel jLcalcular;
     private javax.swing.JLabel jLconjuncion;
+    private javax.swing.JLabel jLdel;
     private javax.swing.JLabel jLdisyuncion;
     private javax.swing.JLabel jLguardar;
-    private javax.swing.JLabel jLguardar1;
     private javax.swing.JLabel jLnegacion;
     private javax.swing.JLabel jLparenAbierto;
     private javax.swing.JLabel jLparenCerrado;
     private javax.swing.JLabel jLregresar;
     private javax.swing.JLabel jLsalir;
+    private javax.swing.JLabel jLvariable0;
+    private javax.swing.JLabel jLvariable1;
     private javax.swing.JLabel jLvariableA;
     private javax.swing.JLabel jLvariableB;
     private javax.swing.JLabel jLvariableC;
+    private javax.swing.JPanel jPac;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPborrarHistorial;
     private javax.swing.JPanel jPconjuncion;
+    private javax.swing.JPanel jPdel;
     private javax.swing.JPanel jPdisyuncion;
     private javax.swing.JPanel jPguardar;
     private javax.swing.JPanel jPguardar1;
-    private javax.swing.JPanel jPguardar2;
     private javax.swing.JPanel jPnegacion;
     private javax.swing.JPanel jPparenArbierto;
     private javax.swing.JPanel jPparenCerrado;
+    private javax.swing.JPanel jPvariable0;
+    private javax.swing.JPanel jPvariable1;
     private javax.swing.JPanel jPvariableA;
     private javax.swing.JPanel jPvariableB;
     private javax.swing.JPanel jPvariableC;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTFexpresionBooleana;
+    private javax.swing.JTextField jTFresultado;
     private javax.swing.JTextArea jThistorialBooleana;
-    private javax.swing.JTextArea jTpantallaBooleana;
     // End of variables declaration//GEN-END:variables
 }

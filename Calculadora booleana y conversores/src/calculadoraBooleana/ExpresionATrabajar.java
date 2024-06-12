@@ -20,7 +20,7 @@ public class ExpresionATrabajar {
         
         //El código que sigue es el que nos permite realizar de forma iterativa los cálculos de las expresiones
         //que se van a simplificar y realiza las asociaciones de multiplicación y sumas. Regresa la expresión simplificada.        
-    public void exprTrab(String expression){
+    public String exprTrab(String expression){
         OperacionesBooleanas op = new OperacionesBooleanas();      
         int contador = 0;
         String salida="";
@@ -39,12 +39,13 @@ public class ExpresionATrabajar {
                 expression = salida;
                 expression=asoMult(expression, op);
                 expression=asoSums(expression, op);
-                System.out.println("Expresion simplificada: " +expression);
+//                System.out.println("Expresion simplificada: " +expression);
                 salida = medio;
             }
             contador++;
             
         } 
+        return expression;
     }
     
     public String asoMult(String expression, OperacionesBooleanas op){

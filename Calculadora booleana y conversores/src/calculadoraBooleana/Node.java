@@ -3,6 +3,7 @@ package calculadoraBooleana;
 /**
  * @author Marck Hernández
  */
+
 class Node {
     String value;
     Node left, right;
@@ -16,7 +17,6 @@ class Node {
         this.left = left;
         this.right = right;
     }
-    
     
     @Override
     public String toString() {

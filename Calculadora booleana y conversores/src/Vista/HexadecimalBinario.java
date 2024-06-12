@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class HexadecimalBinario extends javax.swing.JFrame {
-    private boolean textoMostrado = false;
+    
     public HexadecimalBinario() {
         initComponents();
         //CENTRAR PANTALLA
@@ -441,20 +441,20 @@ public class HexadecimalBinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jLcalcularNormalMouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
+        
         String textoInicio=jTFnumeroHexa.getText();
         jThistorialGeneral.append("\n"+"El número en hexadecimal es:\n "+textoInicio+"\n" );
         
-        String texto0=jTFtransformarNormal.getText();
-         if (!textoMostrado) {
-            jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
-            textoMostrado = true;
-         }
-        else{
-        String texto1 = jTFsigno.getText();
-        String texto2= jTFexponente.getText(); 
-        String texto3 = jTFmantiza.getText(); 
-        jThistorialGeneral.append("El número en binario es:\n"+texto1+texto2+texto3+"\n"); 
+         if (jRBformato.isSelected()) {
+            String texto1 = jTFsigno.getText();
+            String texto2= jTFexponente.getText(); 
+            String texto3 = jTFmantiza.getText(); 
+            jThistorialGeneral.append("El número en binario es:\n"+texto1+texto2+texto3+"\n");   
+        }else{
+            String texto0=jTFtransformarNormal.getText();
+             jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
         }
+
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jTFnumeroHexaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFnumeroHexaKeyTyped

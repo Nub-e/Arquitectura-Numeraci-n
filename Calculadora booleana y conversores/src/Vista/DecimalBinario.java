@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class DecimalBinario extends javax.swing.JFrame {
-    private boolean texto0Mostrado = false;
     public DecimalBinario() {
         
         initComponents();
@@ -368,13 +367,13 @@ public class DecimalBinario extends javax.swing.JFrame {
         jTFmantiza.setText("");
         jTFtransformarNormal.setText("");
         
-        //SE OCULTAN/MOSTRAR ELEMENTOS
-        if(jLcalcularIEEE.isVisible()){
-            jLcalcular8bits.setVisible(true);
-            jLcalcularIEEE.setVisible(false);
-        } else {
+         //SE OCULTAN/MOSTRAR ELEMENTOS
+        if(jRBformato.isSelected()){
             jLcalcular8bits.setVisible(false);
             jLcalcularIEEE.setVisible(true);
+        } else {
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false);
         }
         
         
@@ -433,22 +432,19 @@ public class DecimalBinario extends javax.swing.JFrame {
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
     
-    String texto = jTFnumeroDecimal.getText(); 
-    jThistorialGeneral.append("\n"+ "El número en decimal es:\n "+texto+ "\n"); 
+        String texto = jTFnumeroDecimal.getText(); 
+        jThistorialGeneral.append("\n"+ "El número en decimal es:\n "+texto+ "\n"); 
 
-    String texto0 = jTFtransformarNormal.getText();
-    
-    if (!texto0Mostrado) {
+        if(jRBformato.isSelected()){ //FORMATO IEEE
+            String texto1 = jTFsigno.getText();
+            String texto2 = jTFexponente.getText();
+            String texto3 = jTFmantiza.getText();
+            jThistorialGeneral.append("El número en binario es:\n " + texto1 + texto2 + texto3 + "\n");
+        } else { //FORMATO 8BITS
+            String texto0 = jTFtransformarNormal.getText();
+            jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
+        }
         
-        jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
-        texto0Mostrado = true;
-    } else {
-        // Mostrar los valores de texto1, texto2 y texto3 si ya se ha mostrado texto0
-        String texto1 = jTFsigno.getText();
-        String texto2 = jTFexponente.getText();
-        String texto3 = jTFmantiza.getText();
-        jThistorialGeneral.append("El número en binario es:\n " + texto1 + texto2 + texto3 + "\n");
-    }   
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jLborrarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarHistorialMouseClicked

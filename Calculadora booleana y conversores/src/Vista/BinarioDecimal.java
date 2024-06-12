@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BinarioDecimal extends javax.swing.JFrame {
-     private boolean textoInicial = false;
     public BinarioDecimal() {
         initComponents();
         //CENTRAR PANTALLA
@@ -384,9 +383,7 @@ public class BinarioDecimal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Solo se permiten 23 dígitos para la mantiza.");
     }
 }
-
-
-    
+ 
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
         
         //BORRAR DATOS DE LOS JTFIELD
@@ -397,12 +394,12 @@ public class BinarioDecimal extends javax.swing.JFrame {
         jTFmantiza.setText("");
         
         //SE OCULTAN/MOSTRAR ELEMENTOS
-        if(jLcalcularIEEE.isVisible()){
-            jLcalcular8bits.setVisible(true);
-            jLcalcularIEEE.setVisible(false);
-        } else {
+        if(jRBformato.isSelected()){ //IEEE
             jLcalcular8bits.setVisible(false);
             jLcalcularIEEE.setVisible(true);
+        } else {
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false);
         }
            
     }//GEN-LAST:event_jRBformatoActionPerformed
@@ -433,43 +430,36 @@ public class BinarioDecimal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLsalirMouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
-        String texto = jTFbinario8bits.getText(); 
-        if (!textoInicial) {
-        jThistorialGeneral.append("\n"+"El número en binario es:\n "+texto+"\n"); 
-        textoInicial = true;
-        } else {    
-        String texto1 = jTFsigno.getText();
-        String texto2= jTFexponente.getText(); 
-        String texto3 = jTFmantiza.getText(); 
-        jThistorialGeneral.append("\n"+"El número en binario es:\n"+texto1+texto2+texto3+"\n");
-        }
+          
        
-        String texto0= jTFresultado.getText();
-        jThistorialGeneral.append("El número en decimal es:\n"+texto0+"\n");
+          
+        if(jRBformato.isSelected()){ //FORMATO IEEE
+            
+            String texto1 = jTFsigno.getText();
+            String texto2= jTFexponente.getText(); 
+            String texto3 = jTFmantiza.getText(); 
+            jThistorialGeneral.append("\n"+"El número binario es:\n"+texto1+texto2+texto3+"\n");
+            String texto0= jTFresultado.getText();
+            jThistorialGeneral.append("El número en decimal es:\n"+texto0+"\n");
+        
+        } else {//FORMATO 8BITS
+            String texto = jTFbinario8bits.getText(); 
+            jThistorialGeneral.append("\n"+"El número en binario es:\n "+texto+"\n"); 
+            String texto0= jTFresultado.getText();
+            jThistorialGeneral.append("El número en decimal es:\n"+texto0+"\n");
+        }
+        
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jLcalcular8bitsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcular8bitsMouseClicked
-    // Obtener el número binario de 8 bits del campo de texto
-    String binario8Bits = jTFbinario8bits.getText();
 
-    // Verificar si el campo de texto no está vacío
-    if (binario8Bits.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese un número binario de 8 bits.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    try {
-        // Convertir y procesar el número binario de 8 bits
+        //LEE Y CONVIERTE DATOS EN FORMATO DE 8-BITS
+        String binario8Bits = jTFbinario8bits.getText();
         StringBuilder s = new StringBuilder(binario8Bits);
         BinDec_8bits bin8 = new BinDec_8bits(s);
         String resultado = bin8.impresion8bits();
-        
-        // Mostrar el resultado en el campo de texto correspondiente
         jTFresultado.setText(resultado);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Formato de número binario no válido.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-     
+        
     }//GEN-LAST:event_jLcalcular8bitsMouseClicked
 
     private void jLcalcularIEEEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularIEEEMouseClicked
