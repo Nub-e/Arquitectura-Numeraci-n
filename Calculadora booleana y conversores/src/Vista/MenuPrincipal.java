@@ -1,15 +1,16 @@
 package Vista;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
     public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
         CambiosColorBoton.configurarCambiosColor(jLcalculadoraBooleana, jPcalculadoraBooleana);
         CambiosColorBoton.configurarCambiosColor(jLconversores, jPconversores);
         
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -24,10 +25,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLsalir1 = new javax.swing.JLabel();
         jPconversores = new javax.swing.JPanel();
         jLconversores = new javax.swing.JLabel();
-        jPcalculadoraBooleana = new javax.swing.JPanel();
-        jLcalculadoraBooleana = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPcalculadoraBooleana = new javax.swing.JPanel();
+        jLcalculadoraBooleana = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -50,7 +52,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLsalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -80,9 +82,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPconversores.setLayout(jPconversoresLayout);
         jPconversoresLayout.setHorizontalGroup(
             jPconversoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPconversoresLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLconversores, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPconversoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLconversores, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPconversoresLayout.setVerticalGroup(
             jPconversoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,36 +94,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLconversores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPconversores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 280, 40));
-
-        jPcalculadoraBooleana.setBackground(new java.awt.Color(220, 208, 192));
-
-        jLcalculadoraBooleana.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLcalculadoraBooleana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLcalculadoraBooleana.setText("CALCULADORA BOOLEANA");
-        jLcalculadoraBooleana.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLcalculadoraBooleana.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLcalculadoraBooleanaMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPcalculadoraBooleanaLayout = new javax.swing.GroupLayout(jPcalculadoraBooleana);
-        jPcalculadoraBooleana.setLayout(jPcalculadoraBooleanaLayout);
-        jPcalculadoraBooleanaLayout.setHorizontalGroup(
-            jPcalculadoraBooleanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcalculadoraBooleanaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLcalculadoraBooleana, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPcalculadoraBooleanaLayout.setVerticalGroup(
-            jPcalculadoraBooleanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcalculadoraBooleanaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLcalculadoraBooleana, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(jPcalculadoraBooleana, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+        jPanel1.add(jPconversores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 280, 40));
 
         jPanel3.setBackground(new java.awt.Color(192, 178, 131));
 
@@ -145,6 +119,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 360, 40));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo Arquitectura Computadoresn FINAL (3).png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 290, 290));
+
+        jPcalculadoraBooleana.setBackground(new java.awt.Color(220, 208, 192));
+
+        jLcalculadoraBooleana.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLcalculadoraBooleana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcalculadoraBooleana.setText("CALCULADORA BOOLEANA");
+        jLcalculadoraBooleana.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLcalculadoraBooleana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcalculadoraBooleanaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPcalculadoraBooleanaLayout = new javax.swing.GroupLayout(jPcalculadoraBooleana);
+        jPcalculadoraBooleana.setLayout(jPcalculadoraBooleanaLayout);
+        jPcalculadoraBooleanaLayout.setHorizontalGroup(
+            jPcalculadoraBooleanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcalculadoraBooleanaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLcalculadoraBooleana, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPcalculadoraBooleanaLayout.setVerticalGroup(
+            jPcalculadoraBooleanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPcalculadoraBooleanaLayout.createSequentialGroup()
+                .addComponent(jLcalculadoraBooleana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPcalculadoraBooleana, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,7 +166,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jLconversoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLconversoresMouseClicked
         
         MenuConversores menuCon = new MenuConversores();
@@ -183,9 +189,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLcalculadoraBooleanaMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -220,6 +223,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLcalculadoraBooleana;
     private javax.swing.JLabel jLconversores;
     private javax.swing.JLabel jLsalir1;

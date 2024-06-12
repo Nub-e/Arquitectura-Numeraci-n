@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Marck Hernández
  */
 public class Principal {
-
+     public static StringBuilder historialGeneral = new StringBuilder();
     /**
      * @param args the command line arguments
      */
@@ -61,3 +61,4 @@ public class Principal {
     }
     
 }
+

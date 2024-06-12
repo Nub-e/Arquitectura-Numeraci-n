@@ -2,9 +2,12 @@ package Vista;
 
 import Negocio.Dec_bin;
 import Negocio.dec_bin8bits;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class DecimalBinario extends javax.swing.JFrame {
-
+    private boolean texto0Mostrado = false;
     public DecimalBinario() {
         
         initComponents();
@@ -54,8 +57,6 @@ public class DecimalBinario extends javax.swing.JFrame {
         jLmantiza = new javax.swing.JLabel();
         jLsigno = new javax.swing.JLabel();
         jLexponente = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jThistorialDaB = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jPborrarHistorial = new javax.swing.JPanel();
         jLborrarHistorial = new javax.swing.JLabel();
@@ -65,6 +66,8 @@ public class DecimalBinario extends javax.swing.JFrame {
         jLcalcularIEEE = new javax.swing.JLabel();
         jPguardar = new javax.swing.JPanel();
         jLguardar = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jThistorialGeneral = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -149,7 +152,12 @@ public class DecimalBinario extends javax.swing.JFrame {
 
         jTFnumeroDecimal.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFnumeroDecimal.setBorder(null);
-        jPanel1.add(jTFnumeroDecimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 40));
+        jTFnumeroDecimal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFnumeroDecimalKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jTFnumeroDecimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 520, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jLabel2.setText("Resultado de la transformación:");
@@ -200,13 +208,6 @@ public class DecimalBinario extends javax.swing.JFrame {
         jLexponente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLexponente.setText("Exponente");
         jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 150, -1));
-
-        jThistorialDaB.setEditable(false);
-        jThistorialDaB.setColumns(20);
-        jThistorialDaB.setRows(5);
-        jScrollPane2.setViewportView(jThistorialDaB);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jLabel7.setText("Número decimal:");
@@ -318,6 +319,14 @@ public class DecimalBinario extends javax.swing.JFrame {
 
         jPanel1.add(jPguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 250, 40));
 
+        jThistorialGeneral.setEditable(false);
+        jThistorialGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        jThistorialGeneral.setColumns(20);
+        jThistorialGeneral.setRows(5);
+        jScrollPane2.setViewportView(jThistorialGeneral);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -335,7 +344,21 @@ public class DecimalBinario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+      public void restringirLetras(java.awt.event.KeyEvent evt) {
+      char caracter = evt.getKeyChar();
+      JTextField campoTexto = (JTextField) evt.getSource();
+    
+        if (Character.isLetter(caracter)) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Por favor ingrese números.No se admite letras.");
+        } else if (campoTexto == jTFnumeroDecimal && campoTexto.getText().length() >= 8 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permite 8 dígitos para el número decimal.");
+    
+    }
+}
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
         
         //BORRAR DATOS DE LOS JTFIELD
@@ -409,23 +432,34 @@ public class DecimalBinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jLcalcular8bitsMouseClicked
 
     private void jLguardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLguardarMouseClicked
-       
-        String texto = jTFtransformarNormal.getText(); 
-        jThistorialDaB.append(texto + "\n"); 
+    
+    String texto = jTFnumeroDecimal.getText(); 
+    jThistorialGeneral.append("\n"+ "El número en decimal es:\n "+texto+ "\n"); 
 
+    String texto0 = jTFtransformarNormal.getText();
+    
+    if (!texto0Mostrado) {
+        
+        jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
+        texto0Mostrado = true;
+    } else {
+        // Mostrar los valores de texto1, texto2 y texto3 si ya se ha mostrado texto0
         String texto1 = jTFsigno.getText();
-        String texto2= jTFexponente.getText(); 
-        String texto3 = jTFmantiza.getText(); 
-        jThistorialDaB.append(texto1 + texto2 + texto3 + "\n");
-        
-        
+        String texto2 = jTFexponente.getText();
+        String texto3 = jTFmantiza.getText();
+        jThistorialGeneral.append("El número en binario es:\n " + texto1 + texto2 + texto3 + "\n");
+    }   
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jLborrarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarHistorialMouseClicked
        
-        jThistorialDaB.setText("");
+        jThistorialGeneral.setText("");
         
     }//GEN-LAST:event_jLborrarHistorialMouseClicked
+
+    private void jTFnumeroDecimalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFnumeroDecimalKeyTyped
+        restringirLetras(evt);
+    }//GEN-LAST:event_jTFnumeroDecimalKeyTyped
 
     /**
      * @param args the command line arguments
@@ -490,6 +524,6 @@ public class DecimalBinario extends javax.swing.JFrame {
     private javax.swing.JTextField jTFnumeroDecimal;
     private javax.swing.JTextField jTFsigno;
     private javax.swing.JTextField jTFtransformarNormal;
-    private javax.swing.JTextArea jThistorialDaB;
+    private javax.swing.JTextArea jThistorialGeneral;
     // End of variables declaration//GEN-END:variables
 }
