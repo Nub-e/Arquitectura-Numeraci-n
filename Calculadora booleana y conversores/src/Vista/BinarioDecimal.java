@@ -1,7 +1,9 @@
 package Vista;
 import Negocio.BinDec_8bits;
 import Negocio.Bin_dec;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class BinarioDecimal extends javax.swing.JFrame {
      private boolean textoInicial = false;
@@ -21,7 +23,6 @@ public class BinarioDecimal extends javax.swing.JFrame {
         jTFsigno.setVisible(false);
         jTFexponente.setVisible(false);
         jTFmantiza.setVisible(false);
-        jLcalcularIEEE.setVisible(false);
         
     }
 
@@ -178,6 +179,11 @@ public class BinarioDecimal extends javax.swing.JFrame {
 
         jTFsigno.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jTFsigno.setBorder(null);
+        jTFsigno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFsignoActionPerformed(evt);
+            }
+        });
         jTFsigno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFsignoKeyTyped(evt);
@@ -196,18 +202,18 @@ public class BinarioDecimal extends javax.swing.JFrame {
 
         jLmantiza.setFont(new java.awt.Font("Segoe UI Semilight", 2, 12)); // NOI18N
         jLmantiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLmantiza.setText("Mantiza");
+        jLmantiza.setText("Mantiza(23 digitos)");
         jPanel1.add(jLmantiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 300, -1));
 
         jLsigno.setFont(new java.awt.Font("Segoe UI Semilight", 2, 12)); // NOI18N
         jLsigno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLsigno.setText("Signo");
-        jPanel1.add(jLsigno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 50, -1));
+        jLsigno.setText("Signo(1 Digito)");
+        jPanel1.add(jLsigno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 80, -1));
 
         jLexponente.setFont(new java.awt.Font("Segoe UI Semilight", 2, 12)); // NOI18N
         jLexponente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLexponente.setText("Exponente");
-        jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 150, -1));
+        jLexponente.setText("Exponente(8 Digitos)");
+        jPanel1.add(jLexponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 110, -1));
 
         jPcalcular.setBackground(new java.awt.Color(220, 208, 192));
 
@@ -261,7 +267,7 @@ public class BinarioDecimal extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 130, 270, 290));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLabel7.setText("Ingrese el numero binario:");
+        jLabel7.setText("Ingrese el numero binario: ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jPborrarHistorial.setBackground(new java.awt.Color(220, 208, 192));
@@ -351,15 +357,35 @@ public class BinarioDecimal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void restringirLetrasyNumeros(java.awt.event.KeyEvent evt){
+ public void restringirLetrasyNumeros(java.awt.event.KeyEvent evt) {
     char caracter = evt.getKeyChar();
+    JTextField campoTexto = (JTextField) evt.getSource();
     
-    if (Character.isLetter(caracter) || (caracter!='1' && caracter!='0' && caracter!= '\b' && caracter!='.')) {
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Por favor ingrese números.");
-        }    
+    if (Character.isLetter(caracter) || (caracter != '1' && caracter != '0' && caracter != '\b' && caracter != '.')) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Por favor ingrese los números 0 o 1.");
+        } else if (campoTexto == jTFbinario8bits && campoTexto.getText().length() >= 8 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permite 8 dígitos para el número binario.");
+    } else if (campoTexto == jTFsigno && campoTexto.getText().length() >= 1 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permite un dígito para el signo.");
+    } else if (campoTexto == jTFexponente && campoTexto.getText().length() >= 8 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permiten 8 dígitos para el exponente.");
+    } else if (campoTexto == jTFmantiza && campoTexto.getText().length() >= 23 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permiten 23 dígitos para la mantiza.");
     }
+}
+
+
+    
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
         
         //BORRAR DATOS DE LOS JTFIELD
@@ -370,8 +396,14 @@ public class BinarioDecimal extends javax.swing.JFrame {
         jTFmantiza.setText("");
         
         //SE OCULTAN/MOSTRAR ELEMENTOS
-        jLcalcular8bits.setVisible(false);
-        jLcalcularIEEE.setVisible(true);
+        if (jRBformato.isSelected()) {
+            jLcalcular8bits.setVisible(false);
+            jLcalcularIEEE.setVisible(true);    
+        }else{
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false); 
+        }
+        
            
     }//GEN-LAST:event_jRBformatoActionPerformed
 
@@ -417,14 +449,27 @@ public class BinarioDecimal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jLcalcular8bitsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcular8bitsMouseClicked
+    // Obtener el número binario de 8 bits del campo de texto
+    String binario8Bits = jTFbinario8bits.getText();
 
-        //LEE Y CONVIERTE DATOS EN FORMATO DE 8-BITS
-        String binario8Bits = jTFbinario8bits.getText();
+    // Verificar si el campo de texto no está vacío
+    if (binario8Bits.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese un número binario de 8 bits.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        // Convertir y procesar el número binario de 8 bits
         StringBuilder s = new StringBuilder(binario8Bits);
         BinDec_8bits bin8 = new BinDec_8bits(s);
         String resultado = bin8.impresion8bits();
-        jTFresultado.setText(resultado);
         
+        // Mostrar el resultado en el campo de texto correspondiente
+        jTFresultado.setText(resultado);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Formato de número binario no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+     
     }//GEN-LAST:event_jLcalcular8bitsMouseClicked
 
     private void jLcalcularIEEEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularIEEEMouseClicked
@@ -466,6 +511,10 @@ public class BinarioDecimal extends javax.swing.JFrame {
     private void jTFbinario8bitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFbinario8bitsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFbinario8bitsActionPerformed
+
+    private void jTFsignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFsignoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFsignoActionPerformed
 
     /**
      * @param args the command line arguments

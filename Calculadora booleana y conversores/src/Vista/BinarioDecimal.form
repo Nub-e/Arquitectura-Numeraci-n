@@ -261,6 +261,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFsignoActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFsignoKeyTyped"/>
           </Events>
           <Constraints>
@@ -293,7 +294,7 @@
               <Font name="Segoe UI Semilight" size="12" style="2"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Mantiza"/>
+            <Property name="text" type="java.lang.String" value="Mantiza(23 digitos)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -307,11 +308,11 @@
               <Font name="Segoe UI Semilight" size="12" style="2"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Signo"/>
+            <Property name="text" type="java.lang.String" value="Signo(1 Digito)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="170" width="50" height="-1"/>
+              <AbsoluteConstraints x="20" y="170" width="80" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -321,11 +322,11 @@
               <Font name="Segoe UI Semilight" size="12" style="2"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Exponente"/>
+            <Property name="text" type="java.lang.String" value="Exponente(8 Digitos)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="170" width="150" height="-1"/>
+              <AbsoluteConstraints x="110" y="170" width="110" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -426,7 +427,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Semilight" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el numero binario:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el numero binario: "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

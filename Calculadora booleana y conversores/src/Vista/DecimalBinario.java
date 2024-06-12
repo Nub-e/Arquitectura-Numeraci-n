@@ -2,7 +2,9 @@ package Vista;
 
 import Negocio.Dec_bin;
 import Negocio.dec_bin8bits;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class DecimalBinario extends javax.swing.JFrame {
     private boolean texto0Mostrado = false;
@@ -23,9 +25,7 @@ public class DecimalBinario extends javax.swing.JFrame {
         jTFsigno.setVisible(false);
         jTFexponente.setVisible(false);
         jTFmantiza.setVisible(false);
-        jLcalcularIEEE.setVisible(false);
-        
-        
+         
     }
 
     /**
@@ -341,18 +341,21 @@ public class DecimalBinario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     public void restringirLetras(java.awt.event.KeyEvent evt){
-    char caracter = evt.getKeyChar();
+      public void restringirLetras(java.awt.event.KeyEvent evt) {
+      char caracter = evt.getKeyChar();
+      JTextField campoTexto = (JTextField) evt.getSource();
     
-    if (Character.isLetter(caracter)) {
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Por favor ingrese números.");
-        } 
-        else if (caracter==','){
-         JOptionPane.showMessageDialog(null, "Por favor ingrese como separador la coma (,).");
-     }
+        if (Character.isLetter(caracter)) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Por favor ingrese números.No se admite letras.");
+        } else if (campoTexto == jTFnumeroDecimal && campoTexto.getText().length() >= 8 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permite 8 dígitos para el número decimal.");
+    
     }
+}
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
         
         //BORRAR DATOS DE LOS JTFIELD
@@ -363,8 +366,13 @@ public class DecimalBinario extends javax.swing.JFrame {
         jTFtransformarNormal.setText("");
         
         //SE OCULTAN/MOSTRAR ELEMENTOS
-        jLcalcular8bits.setVisible(false);
-        jLcalcularIEEE.setVisible(true);
+         if (jRBformato.isSelected()) {
+            jLcalcular8bits.setVisible(false);
+            jLcalcularIEEE.setVisible(true);    
+        }else{
+            jLcalcular8bits.setVisible(true);
+            jLcalcularIEEE.setVisible(false); 
+        }
         
     }//GEN-LAST:event_jRBformatoActionPerformed
 
@@ -427,13 +435,11 @@ public class DecimalBinario extends javax.swing.JFrame {
     String texto0 = jTFtransformarNormal.getText();
     
     if (!texto0Mostrado) {
-        // Mostrar el resultado de texto0 solo si no se ha mostrado antes
         
         jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
         texto0Mostrado = true;
     } else {
         // Mostrar los valores de texto1, texto2 y texto3 si ya se ha mostrado texto0
-        System.out.println("\n");
         String texto1 = jTFsigno.getText();
         String texto2 = jTFexponente.getText();
         String texto3 = jTFmantiza.getText();

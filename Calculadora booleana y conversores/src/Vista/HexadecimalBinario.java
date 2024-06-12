@@ -1,7 +1,10 @@
 package Vista;
 
 import Negocio.Hex_bin;
+import java.awt.event.KeyEvent;
+import java.math.BigInteger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class HexadecimalBinario extends javax.swing.JFrame {
     private boolean textoMostrado = false;
@@ -212,6 +215,11 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jLborrarHistorial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLborrarHistorial.setText("BORRAR HISTORIAL");
         jLborrarHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLborrarHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLborrarHistorialMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPborrarHistorialLayout = new javax.swing.GroupLayout(jPborrarHistorial);
         jPborrarHistorial.setLayout(jPborrarHistorialLayout);
@@ -332,6 +340,25 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+  public void restringirLetras(java.awt.event.KeyEvent evt) {
+    char caracter = evt.getKeyChar();
+    JTextField campoTexto = (JTextField) evt.getSource();
+    
+    if (caracter == '\b') {
+        return; 
+    }
+
+    if (!(Character.isDigit(caracter) || (caracter >= 'A' && caracter <= 'F') || (caracter >= 'a' && caracter <= 'f'))) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Por favor, ingrese números del 0 al 9 o letras de A a F.");
+    } else if (campoTexto == jTFnumeroHexa && campoTexto.getText().length() >= 8 && evt.getKeyCode() != KeyEvent.VK_BACK_SPACE) {
+        getToolkit().beep();
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se permite 8 dígitos para el número hexadecimal.");
+    }
+}
+
 
     private void jRBformatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBformatoActionPerformed
        
@@ -341,10 +368,15 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         jTFsigno.setText("");
         jTFexponente.setText("");
         jTFmantiza.setText("");
-        
-        //SE OCULTAN/MOSTRAR ELEMENTOS
-        jLcalcularNormal.setVisible(false);
-        jLcalcularIEEE.setVisible(true);
+
+         //SE OCULTAN/MOSTRAR ELEMENTOS
+         if (jRBformato.isSelected()) {
+            jLcalcularNormal.setVisible(false);
+            jLcalcularIEEE.setVisible(true);    
+        }else{
+            jLcalcularNormal.setVisible(true);
+            jLcalcularIEEE.setVisible(false); 
+        }
         
     }//GEN-LAST:event_jRBformatoActionPerformed
 
@@ -391,7 +423,19 @@ public class HexadecimalBinario extends javax.swing.JFrame {
 
     private void jLcalcularNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcalcularNormalMouseClicked
         
-        //CONVIERTE A FORMATO NORMAL
+        String numeroHexa = jTFnumeroHexa.getText();
+
+        if (numeroHexa.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese un número hexadecimal.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; 
+        }
+
+        try {
+        String numeroBinario = new BigInteger(numeroHexa, 16).toString(2);
+        jTFtransformarNormal.setText(numeroBinario);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Formato de número hexadecimal no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
         
     }//GEN-LAST:event_jLcalcularNormalMouseClicked
@@ -400,16 +444,26 @@ public class HexadecimalBinario extends javax.swing.JFrame {
         String textoInicio=jTFnumeroHexa.getText();
         jThistorialGeneral.append("\n"+"El número en hexadecimal es:\n "+textoInicio+"\n" );
         
+        String texto0=jTFtransformarNormal.getText();
+         if (!textoMostrado) {
+            jThistorialGeneral.append( "El número en binario es:\n " + texto0 + "\n");
+            textoMostrado = true;
+         }
+        else{
         String texto1 = jTFsigno.getText();
         String texto2= jTFexponente.getText(); 
         String texto3 = jTFmantiza.getText(); 
         jThistorialGeneral.append("El número en binario es:\n"+texto1+texto2+texto3+"\n"); 
-    
+        }
     }//GEN-LAST:event_jLguardarMouseClicked
 
     private void jTFnumeroHexaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFnumeroHexaKeyTyped
-
+        restringirLetras(evt);
     }//GEN-LAST:event_jTFnumeroHexaKeyTyped
+
+    private void jLborrarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLborrarHistorialMouseClicked
+        jThistorialGeneral.setText("");
+    }//GEN-LAST:event_jLborrarHistorialMouseClicked
 
     /**
      * @param args the command line arguments

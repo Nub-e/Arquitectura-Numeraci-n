@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/MenuPrincipal.java</file>
-            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/MenuConversores.java</file>
+            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/BinarioDecimal.java</file>
+            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/HexadecimalBinario.java</file>
+            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/DecimalBinario.java</file>
+            <file>file:/C:/Users/EDISON/Desktop/Proyecto/Arquitectura-Numeraci-n/Calculadora%20booleana%20y%20conversores/src/Vista/BinarioHexadecimal.java</file>
         </group>
     </open-files>
 </project-private>
